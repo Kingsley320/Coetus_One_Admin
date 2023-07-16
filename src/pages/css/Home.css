@@ -1,0 +1,184 @@
+* {
+  margin: 0;
+  padding: 0;
+  font-family: Libre Franklin, -apple-system, BlinkMacSystemFont, Roboto, Droid Sans, Helvetica, Arial, sans-serif;
+  box-sizing: border-box;
+}
+
+.topbanner-background {
+  background:rgba(0, 0, 0, 0.5) url(src/assets/images/image5.jpg);
+  height: 480px;
+  background-repeat: no-repeat;
+  background-blend-mode: darken;
+  background-size: cover;
+  text-align: center;
+}
+
+.quick-search-container {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+}
+
+
+.homes-title {
+  margin-bottom: 3rem;
+  color: #fff;
+  font-size: 2.6rem;
+  font-weight: 600;
+  line-height: 130%;
+  text-shadow: 0 0 0.625rem rgba(0, 0, 0, .45);
+}
+
+
+.search-container {
+  overflow: hidden;
+  width: 750px;
+  height: 65px;
+  background-color: #1e272e;
+  border-radius: 4rem;
+  /* padding: 10px; */
+  color: black;
+  background-color: white;
+}
+
+.search__box {
+  background: none;
+  color: black;
+  /* font-size: 1.5rem; */
+  outline: none;
+  border: none;
+  cursor: pointer;
+}
+
+
+
+.search__icon {
+  cursor: pointer;
+  color: #fa983a;
+}
+
+/* .search-container:hover>.search__box {
+  width: 100%;
+  padding-left: 50px;
+}
+
+.search-container:hover>.search__icon {
+  background-color: #eee;
+} */
+
+.show {
+  width: 65%;
+  border: 1px solid orangered;
+}
+
+
+
+
+.custom-content-row {
+  display: flex;
+  gap: 100px;
+  margin: 30px;
+}
+
+.custom-visual-section img {
+  width: 500px;
+  height: 500px;
+  object-fit: contain;
+}
+
+.custom-action-section {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  max-width: 45%;
+}
+
+.custom-header {
+  margin-bottom: 10px;
+}
+
+.custom-header h2 {
+  font-size: 2.25rem;
+  font-weight: 600;
+  line-height: 2.75rem;
+}
+
+.custom-copy {
+  margin-bottom: 20px;
+}
+
+.custom-copy span {
+  font-size: 18px;
+  font-weight: 200;
+  color: darkslategray;
+}
+
+.custom-cta {
+  text-align: center;
+}
+
+.custom-button {
+  /* display: block; */
+  padding: 10px 20px;
+  background-color: #ff5722;
+  color: #fff;
+  text-decoration: none;
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
+
+}
+
+.custom-button:hover {
+  background-color: #e64a19;
+}
+
+.search-input-box {
+  padding: 10px 35px 10px 10px;
+  width: 70%;
+  height: 40px;
+  font-size: 16px;
+  line-height: 1.2;
+  text-overflow: ellipsis;
+  outline: none;
+  border: 1px solid #ccc;
+  border-radius: 0;
+  box-sizing: border-box;
+}
+
+
+.search-button-input {
+  color: #fff;
+  background-color: orangered;
+  border-color: orangered;
+  box-sizing: border-box;
+  border-radius: 2px 2px 2px 2px;
+  transition: all .1s ease-out 0s;
+  height: 40px;
+  padding: 12px 1.5rem;
+  font-weight: 700;
+  font-size: 1rem;
+  border: 1px solid orangered;
+  vertical-align: middle;
+margin-left: 20px;
+}
+
+.search-button-input2 {
+  color: #fff;
+  background-color: orangered;
+  border-color: orangered;
+  box-sizing: border-box;
+  border-radius: 2px 2px 2px 2px;
+  transition: all .1s ease-out 0s;
+  height: 40px;
+  padding: 12px 1.5rem;
+  font-weight: 700;
+  font-size: 1rem;
+  border: 1px solid orangered;
+  vertical-align: middle;
+}

@@ -1,0 +1,169 @@
+.property-page-bg {
+  background-color: whitesmoke;
+}
+
+.property-page {
+  width: 100%;
+  max-width: 1440px;
+  margin: auto;
+  padding-top: 50px;
+}
+
+.property-page h1 {
+  font-size: 20px;
+  padding: 10px 30px;
+}
+
+.property-page section {
+  width: 90%;
+  margin: auto;
+  margin-top: 50px;
+  /* overflow-x: hidden !important; */
+}
+
+
+
+
+
+.property-cards-contents {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  /* overflow-x: auto; */
+  scrollbar-width: thin;
+  scrollbar-color: gray transparent;
+}
+
+.property-wrapper {
+  width: 100%;
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+  overflow-x: auto;
+}
+
+.property-wrapper>.property-card {
+  flex: 0 0 auto;
+  width: 100%;
+}
+
+.property-wrapper::-webkit-scrollbar {
+  display: none;
+}
+
+.property-card {
+  width: 350px;
+  height: 450px;
+  padding: 5px;
+  border-radius: 5px;
+  border: 1px solid gainsboro;
+  background-color: white;
+  transition: 0.5s ease;
+}
+
+.property-card:hover {
+  box-shadow: 2px 2px 10px rgb(174, 150, 150);
+}
+
+.property-cards-arrows {
+  font-size: 30px;
+}
+
+.property-card .top {
+  width: 100%;
+  height: 40px;
+  font-size: 20px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 0 10px;
+}
+
+.property-card .middle {
+  width: 100%;
+  height: 250px;
+  /* background-color: -purple; */
+}
+
+.property-card .middle img {
+  width: 100%;
+  height: 100%;
+}
+
+.property-card .bottom {
+  width: 100%;
+  height: 130px;
+  padding: 0 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  gap: 10px;
+  margin-top: 20px;
+}
+
+.property-card .bottom div {
+  width: 100%;
+  height: 30px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  /* background-color: green; */
+}
+
+.property-card p {
+  font-family: 'Courier New', Courier, monospace;
+  font-weight: 900;
+}
+
+.property-cards-contents .btns {
+  width: 100%;
+  height: 70px;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+}
+
+.property-cards-contents button {
+  width: 350px;
+  height: 40px;
+  font-size: 16px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 5px;
+  border: none;
+}
+
+.property-cards-contents #edit {
+  background-color: navy;
+  color: white;
+}
+
+.property-cards-contents #delete {
+  background-color: rgb(202, 12, 12);
+  color: white;
+}
+
+/* .property-cards-contents button:hover{  
+    background-color: rgb(182, 167, 167);
+  } */
+
+
+
+
+.property-heart {
+  font-size: 30px;
+}
+
+.property-status {
+  background-color: rgb(255, 102, 0);
+  color: white;
+  font-weight: bold;
+  border-radius: 5px;
+}
+
+.property-status p {
+  width: 100%;
+  text-align: center;
+}

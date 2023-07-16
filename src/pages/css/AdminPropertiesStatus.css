@@ -1,0 +1,26 @@
+*{
+  margin: 0;
+  padding: 0;
+}
+
+.Property-Status-h1{
+  font-size: 30px;
+  text-align: center;
+  font-weight: 700;
+  margin-bottom: 30px;
+}
+
+.propertiesStatus-container{
+  display: flex;
+  justify-content: space-between;
+}
+.propertiesStatus-Main{
+  margin: auto;
+}
+
+.propertiesStatus-props{
+display: grid;
+grid-template-columns:1fr auto auto;
+gap: 15px;
+
+}

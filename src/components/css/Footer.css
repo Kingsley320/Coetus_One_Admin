@@ -1,0 +1,89 @@
+* {
+  margin: 0;
+  padding: 0;
+  font-family: Libre Franklin, -apple-system, BlinkMacSystemFont, Roboto, Droid Sans, Helvetica, Arial, sans-serif;
+}
+
+.footerContent {
+  display: flex;
+  margin: 40px;
+  gap: 60px;
+  justify-content: center;
+}
+
+.footerContent h4 {
+  font-size: 1rem;
+  font-weight: 600;
+  color: #585858;
+  line-height: 1.75;
+  margin-bottom: 10px;
+}
+
+.footerContent p{
+  font-size: .75rem;
+  line-height: 30px;
+  color: #333;
+  text-decoration: none;
+}
+
+.footerContent span{
+  font-size: .75rem;
+  line-height: 30px;
+  color: #333;
+  text-decoration: none;
+}
+
+.footerContent p a {
+  color: rgb(46, 42, 241);
+  cursor: pointer;
+}
+
+.footer-flex1 {
+  display: flex;
+  flex-direction: column;
+}
+
+.footer-flex1 img {
+  width: 100px;
+}
+
+.footer-socialMedia {
+  font-size: 23px;
+  /* margin-right: 10px; */
+}
+
+.footer-socialMedia:hover{
+color: rgb(22, 33, 185);
+}
+
+
+.footer-flex4 {
+  width: 40%;
+  color: #585858;
+  font-size: .75rem;
+  line-height: 1.25;
+}
+
+.fairHousingPolicyBold{
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  color: #333;
+  font-weight: 600;
+  margin-top: 12px;
+}
+
+.fairHousingPolicyBold span{
+  line-height: 15px;
+}
+.app-pair{
+  display: grid;
+  grid-template-rows: auto auto;
+  gap: 15px;
+}
+.app-pair img{
+  width: 140px;
+}
+.eho{
+  width: 200px;
+}

@@ -1,0 +1,176 @@
+/* Modal Styles */
+.modal {
+    font-family: sans-serif;
+    position: fixed;
+    top: 0px;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    z-index: 9999;
+    align-items: center;
+    justify-content: center;
+    overflow-y: scroll;
+}
+
+.modal-content {
+    background-color: #fff;
+    padding: 20px;
+    max-width: 600px;
+    cursor: pointer;
+    max-height: 80vh;
+    /* padding-bottom: 30px; */
+    border-radius: 5px;
+    overflow-y: auto;
+    text-align: center;
+}
+
+
+.modal-content .scrollable-content {
+    max-height: 300px;
+    /* Set a fixed height for the scrollable content */
+}
+
+.modal h5 {
+    font-size: 16px;
+}
+
+.modal p {
+    font-size: 16px;
+    line-height: 1.7;
+}
+
+.Icons{
+    font-size: 28px;
+    margin-right: 30px;
+}
+.google{
+    border: solid 1px #d8d8d8;
+    border-radius: 5px;
+    width: 100%;
+    cursor: pointer;
+    text-align: center;
+    padding-top: 15px;
+    padding-bottom: 15px;
+}
+.facebook{
+    cursor: pointer;
+    border: solid 1px #d8d8d8;
+    border-radius: 5px;
+    width: 100%;
+    text-align: center;
+    padding-top: 15px;
+    padding-bottom: 15px;
+}
+.apple{
+    cursor: pointer;
+    border: solid 1px #d8d8d8;
+    width: 100%;
+    text-align: center;
+    padding-top: 15px;
+    padding-bottom: 15px;
+}
+.d-flex {
+    display: flex;
+    justify-content: center;
+    margin-left: 70px;
+}
+
+.email,.password label {
+    font-weight: 600;
+    margin-bottom: 10px;
+}
+
+.modal img {
+    margin-top: 20px;
+}
+
+.first label{
+    margin-bottom: 40px;
+}
+.first-last {
+    display: flex;
+    justify-content: center;
+    gap: 5rem;
+}
+
+.last input {
+    height: 35px;
+    width: 100%;
+    border-radius: 5px;
+    /* outline: orangered; */
+    outline-style:dashed;
+    padding-left: 10px;
+    border: solid 0px #d8d8d8;
+}
+
+.SignIn{
+    margin-top: 5px;
+}
+
+.first input {
+    height: 35px;
+    width: 100%;
+    border-radius: 5px;
+    border: solid 1px #d8d8d8;
+    margin-left: -10px;
+    outline-style:dashed;
+    padding-left: 10px;
+}
+
+.email input {
+    width: 95%;
+    height: 35px;
+    outline-style:dashed;
+    padding-left: 10px;
+    border-radius: 5px;
+    border: solid 1px #d8d8d8;
+}
+
+.password input {
+    width: 95%;
+    height: 35px;
+    outline-style:dashed;
+    padding-left: 10px;
+    border-radius: 5px;
+    border: solid 1px #d8d8d8;
+}
+
+.modal strong{
+    color: blue;
+}
+.email {
+    margin-top: 20px;
+}
+
+.close {
+    margin-top: -10px;
+    font-size: 49px;
+    color: black;
+    right: 10px;
+    cursor: pointer;
+    margin-left: 40px;
+}
+
+/* Navigation Styles */
+ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+li {
+    cursor: pointer;
+}
+
+.button {
+    width: 100%;
+    height: 50px;
+    border-radius: 7px;
+    color: white;
+    font-size: 16px;
+    font-weight: 700;
+    background-color: orangered;
+    cursor: pointer;
+}
