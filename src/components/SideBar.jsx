@@ -1,7 +1,7 @@
 import { BsColumnsGap, BsTextRight, BsFillBagFill, BsFillBagPlusFill, BsFillPersonPlusFill, BsFillPersonFill, BsHeartFill, BsFillCircleFill, BsFillCheckCircleFill, BsFillPeopleFill, BsFillFolderFill, BsFillGeoFill, BsHouseAdd, BsFillHousesFill  } from "react-icons/bs";
 import { Link } from "react-router-dom";
 import AppointmentBookings from "../pages/AppointmentBookings";
-import PropertyPage from "../pages/PropertyPage-admin";
+import PropertyPage from "../../PropertyPage-admin";
 
 function SideBar() {
     return (
@@ -16,12 +16,12 @@ function SideBar() {
                     <Link to="/view-properties" className=" w-full flex gap-4 my-1 py-3 px-5 hover:bg-orange-800 group focus:pl-14 focus:bg-orange-800"><BsFillHousesFill className="text-lg my-auto group-hover:scale-125 group-focus:scale-125  " />View Properties</Link>
 
                     <Link to="/create-user"  className=" w-full flex gap-4 my-1 py-3 px-5 hover:bg-orange-800 group focus:pl-14 focus:bg-orange-800"><BsFillPersonPlusFill className="text-lg my-auto group-hover:scale-125 group-focus:scale-125  " />Create User</Link>
-
-                    <Link to="/users"  className=" w-full flex gap-4 my-1 py-3 px-5 hover:bg-orange-800 group focus:pl-14 focus:bg-orange-800"><BsFillPeopleFill className="text-lg my-auto group-hover:scale-125 group-focus:scale-125  " />Users</Link>
+{/* 
+                    <Link to="/users"  className=" w-full flex gap-4 my-1 py-3 px-5 hover:bg-orange-800 group focus:pl-14 focus:bg-orange-800"><BsFillPeopleFill className="text-lg my-auto group-hover:scale-125 group-focus:scale-125  " />Users</Link> */}
 
                     <Link to="/create-agent"  className=" w-full flex gap-4 my-1 py-3 px-5 hover:bg-orange-800 group focus:pl-14 focus:bg-orange-800"><BsFillPersonPlusFill className="text-lg my-auto group-hover:scale-125 group-focus:scale-125  " />Create Agent</Link>
 
-                    <Link to="/agents"  className=" w-full flex gap-4 my-1 py-3 px-5 hover:bg-orange-800 group focus:pl-14 focus:bg-orange-800"><BsFillPersonFill className="text-lg my-auto group-hover:scale-125 group-focus:scale-125  " />Agents</Link>
+                    {/* <Link to="/agents"  className=" w-full flex gap-4 my-1 py-3 px-5 hover:bg-orange-800 group focus:pl-14 focus:bg-orange-800"><BsFillPersonFill className="text-lg my-auto group-hover:scale-125 group-focus:scale-125  " />Agents</Link> */}
 
                     <Link to="/appointments" element={<AppointmentBookings />} className=" w-full flex gap-4 my-1 py-3 px-5 hover:bg-orange-800 group focus:pl-14 focus:bg-orange-800"><BsFillFolderFill className="text-lg my-auto group-hover:scale-125 group-focus:scale-125  " />Appointments</Link>
 
