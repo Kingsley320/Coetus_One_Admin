@@ -1,27 +1,27 @@
 import "./css/PropertyPage.css";
-// import Navbar from "../components/Navbar";
-import PropertyCard from "../components/PropertyCards";
+import { Link } from "react-router-dom";
+import PropertyCard from "./src/components/PropertyCards";
 import { IoArrowBackCircle, IoArrowForwardCircle } from "react-icons/io5";
 import React, { useRef } from 'react';
-import img1 from "../components/images/4071788923-427702751-original.avif";
-import img2 from "../components/images/8030295992-068154941-original.avif";
-import img3 from "../components/images/map1111111111.jpg";
-import img4 from "../components/images/5398268923-693891751-original.avif";
-import img5 from "../components/images/4151688923-893702751-original.avif";
-import img6 from "../components/images/8358588923-642702751-original.avif";
-import img7 from "../components/images/0221788923-407702751-original.avif";
-import img8 from "../components/images/2270908923-102471751-original.avif";
-import img9 from "../components/images/2815828923-505871751-original.avif";
-import img10 from "../components/images/8709548923-430871751-original.avif";
-import img11 from "../components/images/2273158923-240681751-original.avif";
-import img12 from "../components/images/9045077923-716361751-original.avif";
-import img13 from "../components/images/8235718923-213571751-original.avif";
-import img14 from "../components/images/9481887923-021861751-original.avif";
-import img15 from "../components/images/8945637923-756251751-original.avif";
-import img16 from "../components/images/1136476923-305331751-original.avif";
-import img17 from "../components/images/1737384923-446580751-original.avif";
-import img18 from "../components/images/8120836923-136321751-original.avif";
-import SideBar from "../components/SideBar"
+import img1 from "../assets/images/1961546823-544968651-original.jpg";
+import img2 from "../assets/images/image (7).jpg";
+import img3 from "../assets/images/1961546823-544968651-original.jpg";
+import img4 from "../assets/images/image (7).jpg";
+import img5 from "../assets/images/1961546823-544968651-original.jpg";
+import img6 from "../assets/images/image (7).jpg";
+import img7 from "../assets/images/1961546823-544968651-original.jpg";
+import img8 from "../assets/images/image (7).jpg";
+import img9 from "../assets/images/1961546823-544968651-original.jpg";
+import img10 from "../assets/images/image (7).jpg";
+import img11 from "../assets/images/1961546823-544968651-original.jpg";
+import img12 from "../assets/images/image (7).jpg";
+import img13 from "../assets/images/1961546823-544968651-original.jpg";
+import img14 from "../assets/images/image (7).jpg";
+import img15 from "../assets/images/1961546823-544968651-original.jpg";
+import img16 from "../assets/images/image (7).jpg";
+import img17 from "../assets/images/1961546823-544968651-original.jpg";
+import img18 from "../assets/images/image (7).jpg";
+import SideBar from "./src/components/SideBar"
 
 
 function PropertyPage() {
@@ -60,7 +60,7 @@ function PropertyPage() {
                 <IoArrowBackCircle className="property-cards-arrows" />
               </button>
               <div className="property-wrapper" ref={(el) => (scrollContainerRefs.current[0] = el)}>
-              <PropertyCard views={33} image={img1} price={"729,000"} area={2026} street={"Ozone Park NY 11417  Ozone Park"} city={"New York"}/>
+              <Link to="/single-property"><PropertyCard views={33} image={img1} price={"729,000"} area={2026} street={"Ozone Park NY 11417  Ozone Park"} city={"New York"}/></Link>
               <PropertyCard views={71} image={img2} price={"286,500"} area={3100} street={"170-25 118th Rd, Jamaica, NY 11434"} city={"New York"}/>
               <PropertyCard views={27} image={img3} price={"888,000"} area={2473} street={"52-7 74th St Elmhurst, NY 11373"} city={"New York"}/>
               <PropertyCard views={33} image={img4} price={"770,000"} area={4037} street={"106-20 70th Ave Unit 2-B Forest Hills, NY 11375"} city={"New York"}/>                           
