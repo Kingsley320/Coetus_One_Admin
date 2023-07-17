@@ -2,7 +2,7 @@
 export default function AppointmentCard(props) {
     return (
         <>
-            <div className="rounded-xl shadow-lg overflow-hidden h-72">
+            <div className="rounded-xl shadow-lg overflow-hidden h-76">
                 <div className="mb-1 shadow-md">
                     <img src={props.img} alt={props.alt} className="h-40 w-full object-cover" />
                 </div>
