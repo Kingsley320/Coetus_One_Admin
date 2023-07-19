@@ -6,7 +6,6 @@
   width: 100%;
   max-width: 1440px;
   margin: auto;
-  padding-top: 50px;
 }
 
 .property-page h1 {
@@ -18,28 +17,21 @@
   width: 90%;
   margin: auto;
   margin-top: 50px;
-  /* overflow-x: hidden !important; */
+  overflow-x: hidden !important;
 }
-
-
-
 
 
 .property-cards-contents {
   width: 100%;
   display: flex;
-  justify-content: space-between;
+  grid-template-columns: 1fr auto auto;
   align-items: center;
-  /* overflow-x: auto; */
-  scrollbar-width: thin;
-  scrollbar-color: gray transparent;
 }
 
 .property-wrapper {
   width: 100%;
   display: flex;
   gap: 16px;
-  flex-wrap: wrap;
   overflow-x: auto;
 }
 
@@ -83,7 +75,6 @@
 .property-card .middle {
   width: 100%;
   height: 250px;
-  /* background-color: -purple; */
 }
 
 .property-card .middle img {
@@ -95,9 +86,6 @@
   width: 100%;
   height: 130px;
   padding: 0 10px;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-evenly;
   gap: 10px;
   margin-top: 20px;
 }
@@ -108,7 +96,6 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  /* background-color: green; */
 }
 
 .property-card p {
@@ -125,7 +112,7 @@
 }
 
 .property-cards-contents button {
-  width: 350px;
+  /* width: 350px; */
   height: 40px;
   font-size: 16px;
   display: flex;
@@ -144,13 +131,6 @@
   background-color: rgb(202, 12, 12);
   color: white;
 }
-
-/* .property-cards-contents button:hover{  
-    background-color: rgb(182, 167, 167);
-  } */
-
-
-
 
 .property-heart {
   font-size: 30px;

@@ -1,12 +1,12 @@
 import './App.css';
 import {BrowserRouter, Routes, Route} from 'react-router-dom';
 import AppointmentBookings from './pages/AppointmentBookings';
-import Dashboard from './pages/Dashboard';
+// import Dashboard from './pages/Dashboard';
 import SingleProperty from './pages/SingleProperty';
 import AdminCreateProperties from './pages/AdminCreateProperties';
 import AdminPropertiesStatus from './pages/AdminPropertiesStatus';
 import ApprovePropertyStatus from './pages/ApprovePropertyStatus';
-import PropertyPage from '../PropertyPage-admin';
+import PropertyPage from './pages/PropertyPage-admin';
 import ViewWishlist from './pages/ViewWishlist';
 import Admin from './pages/Admin';
 import NewUser from './pages/NewUser';

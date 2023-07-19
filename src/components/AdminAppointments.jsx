@@ -3,7 +3,7 @@ import img2 from "../assets/images/image (7).jpg";
 import img3 from "../assets/images/2961546823-544968651-original.jpg";
 import AppointmentCard from "./AppointmentCard";
 
-export default function AdminAppointments(props) {
+export default function AdminAppointments() {
     return (
         <>
             <div className="w-full border-2 rounded-xl shadow-lg h-auto p-5 mt-10 m-10 ml-64 border-1 overflow-y-scroll">

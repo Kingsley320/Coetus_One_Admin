@@ -1,4 +1,4 @@
-import PropertyCards from "../components/PropertyCards";
+import PropertyCards from "../components/PropertyCardStatus";
 import "./css/AdminPropertiesStatus.css"
 import img1 from "../assets/images/1961546823-544968651-original.jpg";
 import img2 from "../assets/images/image (7).jpg";

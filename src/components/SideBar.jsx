@@ -1,7 +1,7 @@
 import { BsColumnsGap, BsTextRight, BsFillBagFill, BsFillBagPlusFill, BsFillPersonPlusFill, BsFillPersonFill, BsHeartFill, BsFillCircleFill, BsFillCheckCircleFill, BsFillPeopleFill, BsFillFolderFill, BsFillGeoFill, BsHouseAdd, BsFillHousesFill  } from "react-icons/bs";
 import { Link } from "react-router-dom";
 import AppointmentBookings from "../pages/AppointmentBookings";
-import PropertyPage from "../../PropertyPage-admin";
+import PropertyPage from "../pages/PropertyPage-admin";
 
 function SideBar() {
     return (

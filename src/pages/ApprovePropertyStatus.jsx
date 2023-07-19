@@ -1,4 +1,4 @@
-import PropertyCards from "../components/PropertyCards";
+import PropertyCards from "../components/PropertyCardStatus";
 import SideBar from "../components/SideBar"
 import "./css/ApprovePropertyStatus.css"
 import img1 from "../assets/images/1961546823-544968651-original.jpg";

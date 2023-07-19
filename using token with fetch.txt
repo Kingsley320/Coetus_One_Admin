@@ -1,0 +1,15 @@
+
+let url ='<url>'
+fetch(url,{
+	body:JSON.stringify({
+		name:'james'
+	}),
+	headers:{
+		'Content-Type':'application/json',
+		'authorization':'Bearer <token>'
+	}
+})
+.then(res => res.json())
+.then(res =>{
+	console.log(res)
+})
