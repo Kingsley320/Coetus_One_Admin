@@ -11,6 +11,7 @@ import ViewWishlist from './pages/ViewWishlist';
 import Admin from './pages/Admin';
 import NewUser from './pages/NewUser';
 import CreateAgent from './pages/CreateAgent';
+import Login from './pages/Login';
 
 function App() {
 
@@ -18,8 +19,8 @@ function App() {
     <>
       <BrowserRouter>
       <Routes>
-        <Route path="/" element={<Admin />}/>
-        {/* <Route path="/dashboard" element={<Dashboard />}/> */}
+        <Route path="/" element={<Login />}/>
+        <Route path="/dashboard" element={<Admin />}/>
 
         <Route path="/appointments" element={<AppointmentBookings />}/>
         <Route path="/single-property" element={<SingleProperty />}/>
@@ -28,12 +29,10 @@ function App() {
         <Route path="/create-user" element={<NewUser />}/>
         <Route path="/create-agent" element={<CreateAgent />}/>
 
-
         <Route path="/view-properties"  element={<PropertyPage />}/>
         <Route path="/pending-approvals" element={<ApprovePropertyStatus />}/>
         <Route path="/property-status" element={<AdminPropertiesStatus />}/>
         <Route path="/wishlist" element={<ViewWishlist />}/>
-
 
       </Routes>
       </BrowserRouter>

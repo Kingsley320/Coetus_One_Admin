@@ -59,7 +59,7 @@ function Admin() {
                     <div className="cards" ref={elementRef} onClick={scrollToElement}>
                         <div className="card1">
                             <div className="title-icon">
-                                <h3>Total Products</h3>
+                                <h3>Total Properties</h3>
                                 <MdProductionQuantityLimits className="Icon" />
                             </div>
                             <h2>0</h2>
@@ -73,7 +73,7 @@ function Admin() {
                         </div>
                         <div className="card3">
                             <div className="title-icon">
-                                <h3> Products in cart</h3>
+                                <h3> Products in Wishlist</h3>
                                 <AiOutlineShoppingCart className="Icon" />
                             </div>
                             <h2>0</h2>
