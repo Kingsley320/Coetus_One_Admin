@@ -24,8 +24,10 @@ function Login() {
             try{
                 const login = await axios.post(baseURL, auth)
                 const token = login.data.data.token;
+                const id = login.data.data.id;
                 sessionStorage.setItem("admin-token", token );
-                console.log(login.data.data.token);
+                sessionStorage.setItem("admin-id", id );
+                // console.log(login.data.data.id);
                 if(login.data){
                     navigate("/dashboard");
                 }
