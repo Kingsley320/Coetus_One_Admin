@@ -63,16 +63,16 @@ function Admin() {
     }
 
     // Get agents under a merchant from the API
-    // const getAgents = async () => {
-    //     try {
-    //         const agents = await axios.get(`${baseURL}/agents`, config)
-    //         setAgents(agents.data.data);
-    //         console.log(agents.data.data);
-    //         // setAgentsLen(agents.data.data.length);
-    //     } catch (error) {
-    //         console.log(error);
-    //     }
-    // }
+    const getAgents = async () => {
+        try {
+            const agents = await axios.get(`${baseURL}/agents`, config)
+            setAgents(agents.data.data);
+            console.log(agents.data.data);
+            // setAgentsLen(agents.data.data.length);
+        } catch (error) {
+            console.log(error);
+        }
+    }
 
     // Get users under a merchant or agent from the API
     const getUserCount = async () => {
@@ -103,7 +103,7 @@ function Admin() {
         getProperties();
         getUserCount();
         // getAdminWishlist();
-        // getAgents();
+        getAgents();
     }, [])
 
     return (

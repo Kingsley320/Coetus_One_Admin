@@ -1,10 +1,11 @@
+import axios from 'axios';
 import { useState, useEffect } from 'react';
-// import img1 from '../assets/images/zapposPBS-_CB1509642213_.svg';
-// import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 
 function NewUserForm() {
 
-    const [name, setName] = useState("");
+    const [firstname, setFirstname] = useState("");
+    const [lastname, setLastname] = useState("");
     const [phone, setPhone] = useState("");
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
@@ -12,34 +13,46 @@ function NewUserForm() {
     const [show, setShow] = useState(false);
     const ip = "http://159.65.21.42:9000";
     const url = `${ip}/register`;
-    // const history = useHistory();
+    const navigate = useNavigate();
 
     const handleSubmit = async (e) => {
         e.preventDefault();
         if (
-            name === '' || phone === '' | email === '' | password === ''
+            firstname === '' || lastname === '' || phone === '' | email === '' | password === ''
         ) {
             setErr(true);
             return;
         }
         const user = {
-            name: name,
-            phone: phone,
+            first_name: firstname,
+            last_name: lastname,
             email: email,
+            phone: phone,
             password: password,
-
         }
-        setName('');
+
+        setFirstname('');
+        setLastname('');
         setPhone('');
         setEmail('');
         setPassword('');
         console.log((user));
 
+        const baseURL = "http://property.reworkstaging.name.ng/v1";
+        const config = {
+            headers: {
+                "Authorization": `Bearer ${sessionStorage.getItem("admin-token")}`
+            }
+        }
         try {
-            const resp = await axios.post(url, user);
+            const resp = await axios.post(`${baseURL}/users`, user, config);
             console.log(resp);
             setShow(true);
-            setTimeout(()=>setShow(false),2500);
+            setTimeout(()=> {
+                setShow(false);
+                navigate("/dashboard");
+            },2500);
+            
         } catch (err) {
             console.log(err);
         }
@@ -63,9 +76,14 @@ function NewUserForm() {
                     <form className='w-full  bg-white p-10 rounded-xl text-left'>
                         <div>
                             <div className='my-4'>
-                                <label htmlFor="" className='text-sm block font-semibold mb-0.5'>Full Name</label>
-                                <input type="text" placeholder='Full Name' className='bg-transparent w-full rounded-xl outline-none border-1 border-gray-300 text-sm text-black py-1 px-3 focus:border-orange-600 h-10' value={name} onChange={(e) => setName(e.target.value)} />
-                                {err === true && name === '' ? <span className='text-red-600'>Full Name Required</span> : null}
+                                <label htmlFor="" className='text-sm block font-semibold mb-0.5'>First Name</label>
+                                <input type="text" placeholder='Full Name' className='bg-transparent w-full rounded-xl outline-none border-1 border-gray-300 text-sm text-black py-1 px-3 focus:border-orange-600 h-10' value={firstname} onChange={(e) => setFirstname(e.target.value)} />
+                                {err === true && firstname === '' ? <span className='text-red-600'>First Name Required</span> : null}
+                            </div>
+                            <div className='my-4'>
+                                <label htmlFor="" className='text-sm block font-semibold mb-0.5'>Last Name</label>
+                                <input type="text" placeholder='Full Name' className='bg-transparent w-full rounded-xl outline-none border-1 border-gray-300 text-sm text-black py-1 px-3 focus:border-orange-600 h-10' value={lastname} onChange={(e) => setLastname(e.target.value)} />
+                                {err === true && lastname === '' ? <span className='text-red-600'>Last Name Required</span> : null}
                             </div>
                             <div className='my-4'>
                                 <label htmlFor="" className='text-sm block font-semibold mb-0.5'>Phone Number</label>

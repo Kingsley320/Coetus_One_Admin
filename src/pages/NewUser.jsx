@@ -1,4 +1,4 @@
-import AddProductForm from '../components/AddUserForm';
+import NewUserForm from '../components/NewUserForm';
 import SideBar from '../components/SideBar';
 
 function NewUser() {
@@ -6,7 +6,7 @@ function NewUser() {
         <>
         <div className='flex gap-8'>
         <SideBar />
-        <AddProductForm />
+        <NewUserForm />
         </div>
         </>
     )
