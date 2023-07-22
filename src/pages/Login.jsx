@@ -6,7 +6,7 @@ import axios from 'axios';
 function Login() {
     const baseURL = "http://property.reworkstaging.name.ng/v1/auth/login";
     const [err, setErr] = useState(false);
-    const password = 'rework';
+    const [logerr, setLogErr] = useState(false);
     const [pass, setPass] = useState('');
     const [email, setEmail] = useState('');
     const navigate = useNavigate();
@@ -16,30 +16,43 @@ function Login() {
         if (pass === '' || email === '') {
             setErr(true);
         }
-        else{
+        else {
             const auth = {
                 "email": email,
                 "password": pass
             }
-            try{
+            try {
                 const login = await axios.post(baseURL, auth)
                 const token = login.data.data.token;
                 const id = login.data.data.id;
-                sessionStorage.setItem("admin-token", token );
-                sessionStorage.setItem("admin-id", id );
+                sessionStorage.setItem("admin-token", token);
+                sessionStorage.setItem("admin-id", id);
                 // console.log(login.data.data.id);
-                if(login.data){
+                if (login.data.data.token) {
                     navigate("/dashboard");
                 }
-            }catch (err){
+                else {
+                    // setTimeout(() => {
+                        setLogErr(true);
+                    // }, 2000);
+                    // return;
+                }
+            } catch (err) {
                 console.log(err);
             }
-           }
+        }
     }
 
 
     return (
         <>
+            {
+                logerr === true ? (
+                    <div className='text-white bg-red-600'>Unathourized</div>
+                ) : (
+                    null
+                )
+            }
             <div className=' mb-28 text-center h-[67vh] pt-20 mx-80 bg-transparent'>
                 <div className='border-1 border-gray-400 text-left w-85 mx-auto mt-4 rounded-md px-6 py-5 my-8 font-sans'>
                     <h1 className='text-center text-3xl font-Arial font-bold mb-10'>Admin Sign in</h1>
