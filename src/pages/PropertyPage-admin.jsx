@@ -1,7 +1,7 @@
 import "./css/PropertyPage.css";
 import PropertyCard from "../components/PropertyCards";
 import { IoArrowBackCircle, IoArrowForwardCircle } from "react-icons/io5";
-import React, { useRef } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import img1 from "../assets/images/1961546823-544968651-original.jpg";
 import img2 from "../assets/images/image (7).jpg";
 import img3 from "../assets/images/1961546823-544968651-original.jpg";
@@ -27,6 +27,30 @@ import "../pages/css/PropertyPage.css";
 
 function PropertyPage() {
   const scrollContainerRefs = useRef([]);
+  const [properties, setProperties] = useState([]);
+
+  const fetchAllProducts = () => {
+    const url = "http://property.reworkstaging.name.ng/v1/properties?agent=64b95b99fb9797aed16331da&verified=false&city=Garki";
+    fetch(url, {
+      method: "GET",
+      headers: {
+        'Content-Type': 'application/json',
+        'authorization': 'Bearer ' + sessionStorage.getItem("admin-token")
+      }
+    })
+      .then(res => res.json())
+      .then(data => { 
+        setProperties(data.data);
+        console.log(data.data)
+      })
+      .catch(error => {
+        console.error('Error fetching properties:', error);
+      });
+  };
+
+  useEffect(() => {
+    fetchAllProducts();
+  }, []);
 
   const scrollLeft = (sectionIndex) => {
     if (scrollContainerRefs.current[sectionIndex]) {
@@ -55,18 +79,25 @@ function PropertyPage() {
         <div className="right">
           <h1 className="mt-0">View Properties</h1>
           <section>
-            <h2>Agent 1</h2>
+          <h2>Agent 1</h2>
             <div className="property-cards-contents">
               <button onClick={() => scrollLeft(0)}>
                 <IoArrowBackCircle className="property-cards-arrows" />
               </button>
               <div className="property-wrapper" ref={(el) => (scrollContainerRefs.current[0] = el)}>
-              <PropertyCards views={33} image={img1} price={"729,000"} area={2026} street={"Ozone Park NY 11417  Ozone Park"} city={"New York"}/>
-              <PropertyCard views={71} image={img2} price={"286,500"} area={3100} street={"170-25 118th Rd, Jamaica, NY 11434"} city={"New York"}/>
-              <PropertyCard views={27} image={img3} price={"888,000"} area={2473} street={"52-7 74th St Elmhurst, NY 11373"} city={"New York"}/>
-              <PropertyCard views={33} image={img4} price={"770,000"} area={4037} street={"106-20 70th Ave Unit 2-B Forest Hills, NY 11375"} city={"New York"}/>                           
-              <PropertyCard views={71} image={img5} price={"600,000"} area={3500} street={"1810 3rd Ave Unit A-8A"} city={"New York"}/>
-              <PropertyCard views={27} image={img6} price={"650,000"} area={2960} street={"23-02 113th Dr, Queens Village"} city={"New York"}/>
+                {properties.map((agentProperties, agentIndex) => (
+                  <div key={agentIndex}
+                  >
+                    <PropertyCard
+                      id={agentProperties.id}
+                      image={agentProperties.image}
+                      price={agentProperties.price}
+                      area={agentProperties.total_area}
+                      street={agentProperties.country}
+                      city={agentProperties.city}
+                    />
+                  </div>
+                ))}
               </div>
               <button onClick={() => scrollRight(0)}>
                 <IoArrowForwardCircle className="property-cards-arrows" />
