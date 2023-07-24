@@ -27,15 +27,13 @@ function Login() {
                 const id = login.data.data.id;
                 sessionStorage.setItem("admin-token", token);
                 sessionStorage.setItem("admin-id", id);
-                // console.log(login.data.data.id);
-                if (login.data.data.token) {
-                    navigate("/dashboard");
+                if (!login.data.data.token) {
+                    setTimeout(() => {
+                    setLogErr(true);
+                    }, 2000);
                 }
                 else {
-                    // setTimeout(() => {
-                        setLogErr(true);
-                    // }, 2000);
-                    // return;
+                    navigate("/dashboard");
                 }
             } catch (err) {
                 console.log(err);
@@ -46,14 +44,14 @@ function Login() {
 
     return (
         <>
+            <div className=' mb-28 text-center h-[67vh] pt-20 mx-60 bg-transparent'>
             {
                 logerr === true ? (
-                    <div className='text-white bg-red-600'>Unathourized</div>
+                    <div className='text-white bg-red-600 text-2xl font-semibold'>Unathourized</div>
                 ) : (
                     null
                 )
             }
-            <div className=' mb-28 text-center h-[67vh] pt-20 mx-80 bg-transparent'>
                 <div className='border-1 border-gray-400 text-left w-85 mx-auto mt-4 rounded-md px-6 py-5 my-8 font-sans'>
                     <h1 className='text-center text-3xl font-Arial font-bold mb-10'>Admin Sign in</h1>
                     <form action="">
