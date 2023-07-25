@@ -23,29 +23,29 @@ import img18 from "../assets/images/image (7).jpg";
 import SideBar from "../components/SideBar"
 import PropertyCards from "../components/PropertyCards";
 import "../pages/css/PropertyPage.css";
+import axios from "axios";
 
 
 function PropertyPage() {
   const scrollContainerRefs = useRef([]);
   const [properties, setProperties] = useState([]);
+  const baseURL = "http://property.reworkstaging.name.ng/v1";
 
-  const fetchAllProducts = () => {
-    const url = "http://property.reworkstaging.name.ng/v1/properties?agent=64b95b99fb9797aed16331da&verified=false&city=Garki";
-    fetch(url, {
-      method: "GET",
+  const fetchAllProducts = async () => {
+    const url = `${baseURL}/properties?agent=64b81dff11d45559c8840bbf&verified=false&city=gwagwalada`;
+    const config = {
       headers: {
         'Content-Type': 'application/json',
         'authorization': 'Bearer ' + sessionStorage.getItem("admin-token")
       }
-    })
-      .then(res => res.json())
-      .then(data => { 
-        setProperties(data.data);
-        console.log(data.data)
-      })
-      .catch(error => {
-        console.error('Error fetching properties:', error);
-      });
+    }
+    try {
+      const properties = await axios.get(url, config);
+      setProperties(properties.data.data)
+      // console.log(properties.data.data);
+    } catch (error) {
+      console.error(error);
+    }
   };
 
   useEffect(() => {
@@ -72,21 +72,21 @@ function PropertyPage() {
 
   return (
     <div className="property-page-bg">
-      <div className="property-page"> 
-        <div className="left">          
+      <div className="property-page">
+        <div className="left">
           <SideBar />
         </div>
         <div className="right">
           <h1 className="mt-0">View Properties</h1>
           <section>
-          <h2>Agent 1</h2>
+            <h2>Agent 1</h2>
             <div className="property-cards-contents">
               <button onClick={() => scrollLeft(0)}>
                 <IoArrowBackCircle className="property-cards-arrows" />
               </button>
               <div className="property-wrapper" ref={(el) => (scrollContainerRefs.current[0] = el)}>
-                {properties.map((agentProperties, agentIndex) => (
-                  <div key={agentIndex}
+                {properties.map((agentProperties, propertytIndex) => (
+                  <div key={propertytIndex}
                   >
                     <PropertyCard
                       id={agentProperties.id}
@@ -111,12 +111,12 @@ function PropertyPage() {
                 <IoArrowBackCircle className="property-cards-arrows" />
               </button>
               <div className="property-wrapper" ref={(el) => (scrollContainerRefs.current[1] = el)}>
-                <PropertyCard views={33} image={img7} price={"895,000"} area={4055} street={"71 Nassau St Unit 7D"} city={"New York"}/>
-                <PropertyCard views={71} image={img8} price={"622,999"} area={4300} street={"74-25 43 Ave Unit 1B1434, Elmhurst"} city={"New York"}/>
-                <PropertyCard views={33} image={img10} price={"3,300,000"} area={2026} street={"110 Riverside Dr Unit 8D"} city={"New York"}/>                           
-                <PropertyCard  views={27} image={img9} price={"455,000"} area={3753} street={"177 Amity St Unit 873 Brooklyn"} city={"New York"}/>
-                <PropertyCard views={71} image={img11} price={"725,000"} area={3400} street={"582 Grant Pl"} city={"New York"}/>
-                <PropertyCard  views={27} image={img12} price={"658,000"} area={2473} street={"246 Sherman St"} city={"New York"}/>
+                <PropertyCard views={33} image={img7} price={"895,000"} area={4055} street={"71 Nassau St Unit 7D"} city={"New York"} />
+                <PropertyCard views={71} image={img8} price={"622,999"} area={4300} street={"74-25 43 Ave Unit 1B1434, Elmhurst"} city={"New York"} />
+                <PropertyCard views={33} image={img10} price={"3,300,000"} area={2026} street={"110 Riverside Dr Unit 8D"} city={"New York"} />
+                <PropertyCard views={27} image={img9} price={"455,000"} area={3753} street={"177 Amity St Unit 873 Brooklyn"} city={"New York"} />
+                <PropertyCard views={71} image={img11} price={"725,000"} area={3400} street={"582 Grant Pl"} city={"New York"} />
+                <PropertyCard views={27} image={img12} price={"658,000"} area={2473} street={"246 Sherman St"} city={"New York"} />
               </div>
               <button onClick={() => scrollRight(1)}>
                 <IoArrowForwardCircle className="property-cards-arrows" />
@@ -130,12 +130,12 @@ function PropertyPage() {
                 <IoArrowBackCircle className="property-cards-arrows" />
               </button>
               <div className="property-wrapper" ref={(el) => (scrollContainerRefs.current[2] = el)}>
-                <PropertyCard views={33} image={img13} price={"559,000"} area={3228} street={"0 Pennyfield Ave Unit 13C,Bronx"} city={"New York"}/>
-                <PropertyCard views={71} image={img14} price={"486,500"} area={3100} street={"44 Heathcote Rd"} city={"New York"}/>
-                <PropertyCard  views={27} image={img15} price={"629,000"} area={3153} street={"128 Memphis Ave"} city={"New York"}/>
-                <PropertyCard views={33} image={img16} price={"732,000"} area={3466} street={"545 Pelham Manor Rd"} city={"New York"}/>                           
-                <PropertyCard views={71} image={img17} price={"286,500"} area={3259} street={"145 Valentine Ln Unit 2E"} city={"New York"}/>
-                <PropertyCard  views={27} image={img18} price={"888,000"} area={2473} street={"6-54 267th St County Road"} city={"New York"}/>
+                <PropertyCard views={33} image={img13} price={"559,000"} area={3228} street={"0 Pennyfield Ave Unit 13C,Bronx"} city={"New York"} />
+                <PropertyCard views={71} image={img14} price={"486,500"} area={3100} street={"44 Heathcote Rd"} city={"New York"} />
+                <PropertyCard views={27} image={img15} price={"629,000"} area={3153} street={"128 Memphis Ave"} city={"New York"} />
+                <PropertyCard views={33} image={img16} price={"732,000"} area={3466} street={"545 Pelham Manor Rd"} city={"New York"} />
+                <PropertyCard views={71} image={img17} price={"286,500"} area={3259} street={"145 Valentine Ln Unit 2E"} city={"New York"} />
+                <PropertyCard views={27} image={img18} price={"888,000"} area={2473} street={"6-54 267th St County Road"} city={"New York"} />
               </div>
               <button onClick={() => scrollRight(2)}>
                 <IoArrowForwardCircle className="property-cards-arrows" />
