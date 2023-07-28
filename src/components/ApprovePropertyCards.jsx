@@ -2,6 +2,7 @@ import { BsFillCheckCircleFill, BsFillXCircleFill } from "react-icons/bs";
 import img1 from "../assets/images/1961546823-544968651-original.jpg";
 import axios from "axios";
 
+// Note: API requires a property to have at least an image to qualify verification process
 function ApprovePropertyCard(props) {
     
     const baseURL = "http://property.reworkstaging.name.ng/v1";
@@ -13,7 +14,7 @@ function ApprovePropertyCard(props) {
       }
     const handleApprove = async (e) => {
         const body = {
-            "is_verified": true
+            "is_verified": "true"
         }
         const id = e.parentNode.parentNode.parentNode.id;
         try {
@@ -26,13 +27,14 @@ function ApprovePropertyCard(props) {
     }
     const handleDecline = async (e) => {
         const body = {
-            "is_verified": false
+            "is_verified": "false"
         }
         const id = e.parentNode.parentNode.parentNode.id;
         try {
-            const Approval = await axios.delete(`${baseURL}/properties/${id}`, config)
+            const Approval = await axios.put(`${baseURL}/properties/${id}/set-verified`, body, config)
             console.log(Approval.data);
-        } catch (error) {
+            alert("Unverified");
+        } catch (error) {   
             console.log(error);
         }
     }
