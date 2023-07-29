@@ -16,6 +16,9 @@ import ReactPaginate from 'react-paginate';
 import ScheduleCard from "../components/ScheduleCard";
 import Review from "../components/Review";
 import SideBar from "../components/SideBar";
+import { useParams } from "react-router-dom";
+import { useEffect } from "react";
+import axios from "axios";
 
 const items = [
     <Facility key="1" img={img5} alt={"property facility"} name="Torrey Pines Elementary School" rating="A+" score="9/10" gradeRange="K to 5th" access="Public" driveTime="5 min drive" />,
@@ -81,7 +84,35 @@ function PaginatedItems({ }) {
     );
 }
 
-function AdminAppointments() {
+function SingleProperty() {
+    const baseURL = "http://property.reworkstaging.name.ng/v1";
+    const { id } = useParams();
+    // console.log(id);
+    const [aProperty, setProperty] = useState([]);
+
+    const getProperty = async () => {
+        // alert("hi")
+        const config = {
+            headers: {
+                'Content-Type': 'application/json',
+                'authorization': 'Bearer ' + sessionStorage.getItem("admin-token")
+            }
+        }
+
+        try {
+            // if(aProperty === null){
+            const gettheProperty = await axios.get(`${baseURL}/properties/${id}`, config)
+            setProperty(gettheProperty.data);
+            // }
+            console.log(aProperty);
+        } catch (error) {
+            console.log(error);
+        }
+    }
+
+    useEffect(() => {
+        getProperty();
+    }, []);
 
 
     return (
@@ -89,18 +120,18 @@ function AdminAppointments() {
             <div>
                 <SideBar />
 
-                <div className="mb-5 ml-60">
+                <div className="mb-5 ml-56">
                     <div className=" overflow-hidden w-full ">
-                        <div className="grid grid-cols-6 gap-1 mx-40 pb-5 ">
-                            <div className="col-span-4">
-                                <img src={img1} alt="product info" className=" mix-blend-multiply h-full w-auto cover" />
+                        <div className="grid grid-cols-6 gap-1 pb-5 h-96">
+                            <div className="col-span-3">
+                                <img src={aProperty.image} alt="product info" className=" mix-blend-multiply h-96 w-full cover" />
                             </div>
-                            <div className="col-span-2 grid grid-rows-2 gap-1">
+                            <div className="col-span-3 grid grid-rows-2 gap-1">
                                 <div className=' '>
-                                    <img src={img2} alt="product info" className="h-full cover" />
+                                    <img src={img2} alt="product info" className="h-48 w-full cover" />
                                 </div>
                                 <div className=' '>
-                                    <img src={img3} alt="product info h-full" className=" h-full cover" />
+                                    <img src={img3} alt="product info h-full" className=" h-48 w-full cover" />
                                 </div>
                             </div>
 
@@ -113,7 +144,7 @@ function AdminAppointments() {
                                 <div>
                                     <div>
                                         <div className="flex justify-between w-full">
-                                            <h2 className="text-2xl font-semibold">$2,100,000</h2>
+                                            <h2 className="text-2xl font-semibold">₦{aProperty.price}</h2>
                                             <div className="flex gap-5 text-gray-700 ">
                                                 <IoHeartOutline className="my-auto cursor-pointer text-3xl" />
                                                 <IoShareOutline className="my-auto cursor-pointer text-3xl" />
@@ -122,36 +153,52 @@ function AdminAppointments() {
                                         </div>
 
                                     </div>
-                                    <div className="w-64  text-gray-800">
-                                        <p className="text-left mt-3">9694 Claiborne Sq</p>
-                                        <p className="text-left">La Jolla, CA 92037 | La Jolla Farms
-                                            Estimated payment $13,959/month</p>
+                                    <div className="w-72  text-gray-800">
+                                        <p className="text-left mt-3">{aProperty.address}</p>
+                                        <p className="text-left"><span>{aProperty.category}</span><br />
+                                            <span>Estimated payment ₦
+                                                {
+                                                    Math.ceil(parseInt(aProperty.price) * 1000000 / 12)
+                                                }/month
+                                            </span></p>
                                     </div>
                                     <div className=" border-1 border-t border-b py-3 border-gray-300 flex justify-between px-10 my-10 text-xl divide-x divide-slate-400 m">
-                                        <p><b>4</b> Beds</p>
-                                        <p className="pl-12"><b>3</b> Baths</p>
-                                        <p className="pl-12"><b>2,685</b> SqFt</p>
-                                        <p className="pl-12"><b>$500/mo</b> HOA Fee</p>
+                                        <p><b>{aProperty.bedroom}</b> Beds</p>
+                                        <p className="pl-12"><b>{aProperty.bedroom}</b> Baths</p>
+                                        <p className="pl-12">{aProperty.total_area}</p>
+                                        <p className="pl-12">
+                                            <b>
+                                                ₦{Math.ceil((parseInt(aProperty.price) * 1000000 / 12) / 100 * 5)}
+                                            </b>
+                                            HOA Fee
+                                        </p>
                                     </div>
                                     <div className="text-left">
                                         <h3 className="font-semibold text-lg">About This Home</h3>
                                         <p className="text-gray-700 ">
-                                            Welcome to this stunning one of a kind home in the prestigious Blackhorse community. If you're looking for a modern retreat this recently renovated home is perfect for you. Professionally finished by a European design studio it was completely updated with Miele appliances and contemporary cabinetry. Get ready to escape to your private oasis with private pool and jacuzzi as well as access to the beautiful Estancia resort. This turn key luxury home is waiting and you won't want to miss out.
+                                            {/* Welcome to this stunning one of a kind home in the prestigious Blackhorse community. If you're looking for a modern retreat this recently renovated home is perfect for you. Professionally finished by a European design studio it was completely updated with Miele appliances and contemporary cabinetry. Get ready to escape to your private oasis with private pool and jacuzzi as well as access to the beautiful Estancia resort. This turn key luxury home is waiting and you won't want to miss out. */}
+                                            {aProperty.description}
                                         </p>
                                     </div>
-                                    <div className="w-64  text-gray-800">
-                                        <p className="text-left mt-3">Listing Agent</p>
-                                        <p className="text-left font-semibold">Vivi Henely</p>
-                                        <p className="text-left">Compass</p>
-                                        <p className="text-left ">(619) 990-7703</p>
-                                        <p className="text-left ">vivihenely@gmailcom</p>
-                                        <p className="text-left ">License #01734590</p>
-                                    </div>
+                                    {
+                                        aProperty.agent ? (
+                                            <div className="w-64  text-gray-800">
+                                                <p className="text-left mt-3 font-semibold">Listing Agent</p>
+                                                <p className="text-left ">{aProperty.agent.full_name}</p>
+                                                <p className="text-left">{aProperty.agent.company}</p>
+                                                <p className="text-left ">{aProperty.agent.primary_phone}</p>
+                                                <p className="text-left ">{aProperty.agent.email}</p>
+                                                <p className="text-left flex">Verified Agent: {aProperty.agent.is_verified === true ? (<p>✅</p>) : (<p>❌</p>)}</p>
+                                            </div>
+                                        ) : (
+                                            <p>Loading</p>
+                                        )
+                                    }
                                     <div className="grid grid-cols-3 text-left py-6 border-b border-gray-300">
                                         <div>
                                             <div className="mb-4">
                                                 <p className="text-gray-700">Home Type</p>
-                                                <p className="font-semibold">Townhome</p>
+                                                <p className="font-semibold">{aProperty.category}</p>
                                             </div>
                                             <div>
                                                 <p className="text-gray-700">Year Built</p>
@@ -212,4 +259,4 @@ function AdminAppointments() {
         </>
     )
 }
-export default AdminAppointments
+export default SingleProperty

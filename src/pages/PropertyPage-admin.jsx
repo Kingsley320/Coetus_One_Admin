@@ -21,18 +21,20 @@ import img16 from "../assets/images/image (7).jpg";
 import img17 from "../assets/images/1961546823-544968651-original.jpg";
 import img18 from "../assets/images/image (7).jpg";
 import SideBar from "../components/SideBar"
-import PropertyCards from "../components/PropertyCards";
 import "../pages/css/PropertyPage.css";
 import axios from "axios";
+import { Link } from "react-router-dom";
+import SingleProperty from "./SingleProperty";
 
 
 function PropertyPage() {
   const scrollContainerRefs = useRef([]);
   const [properties, setProperties] = useState([]);
   const baseURL = "http://property.reworkstaging.name.ng/v1";
+  const aProperty = `${baseURL}/properties`
 
   const fetchAllProducts = async () => {
-    const url = `${baseURL}/properties?agent=64b81dff11d45559c8840bbf&verified=false&city=gwagwalada`;
+    const url = `${baseURL}/properties?merchant=64b6904111d45559c8840b12&verified=true`;
     const config = {
       headers: {
         'Content-Type': 'application/json',
@@ -85,8 +87,8 @@ function PropertyPage() {
                 <IoArrowBackCircle className="property-cards-arrows" />
               </button>
               <div className="property-wrapper" ref={(el) => (scrollContainerRefs.current[0] = el)}>
-                {properties.map((agentProperties, propertytIndex) => (
-                  <div key={propertytIndex}
+                {properties && properties.map((agentProperties) => (
+                 <Link to={`/${agentProperties.id}`} key={agentProperties.id}
                   >
                     <PropertyCard
                       id={agentProperties.id}
@@ -96,7 +98,7 @@ function PropertyPage() {
                       street={agentProperties.country}
                       city={agentProperties.city}
                     />
-                  </div>
+                    </Link>
                 ))}
               </div>
               <button onClick={() => scrollRight(0)}>

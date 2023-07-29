@@ -11,6 +11,7 @@ import axios from "axios";
 import { useEffect } from "react";
 import PropertyRow from "../components/PropertyRow";
 import UserRow from "../components/UserRow";
+import AgentRow from "../components/AgentRow";
 function Admin() {
     // Template Emmanuel got from somewhere. Don't try to understand it
     const [searchQuery, setSearchQuery] = useState('');
@@ -65,9 +66,9 @@ function Admin() {
     // Get agents under a merchant from the API
     const getAgents = async () => {
         try {
-            const agents = await axios.get(`${baseURL}/agents`, config)
+            const agents = await axios.get(`${baseURL}/merchants/agents`, config)
             setAgents(agents.data.data);
-            console.log(agents.data.data);
+            // console.log(agents.data.data);
             // setAgentsLen(agents.data.data.length);
         } catch (error) {
             console.log(error);
@@ -87,22 +88,32 @@ function Admin() {
     }
 
     // Get wishlist items
-    // const getAdminWishlist = async () => {
-    //     try {
-    //         const users = await axios.get(`${baseURL}/merchants/:${sessionStorage.getItem('admin-id')}/wishlist`, config)
-    //         console.log(users.data.data.length);
-    //         setWishlistLen(users.data.data.length);
-    //         setWishlist(users.data.data);
-    //     } catch (error) {
-    //         console.log(error);
-    //     }
-    // }
+    const getAdminWishlist = async () => {
+        try {
+            const users = await axios.get(`${baseURL}/merchants/${sessionStorage.getItem('admin-id')}/wishlist`, config)
+            // console.log(users.data.data.length);
+            setWishlistLen(users.data.data.length);
+            setWishlist(users.data.data);
+        } catch (error) {
+            console.log(error);
+        }
+    }
 
+
+    const deleteProperty = async (e) =>{
+        const id = e.parentNode.parentNode;
+        console.log(id);
+        try {
+            const deleteItem = await axios.delete(`${baseURL}/properties/${id}`)
+        } catch (error) {
+            console.log(error);
+        }
+    }
 
     useEffect(() => {
         getProperties();
         getUserCount();
-        // getAdminWishlist();
+        getAdminWishlist();
         getAgents();
     }, [])
 
@@ -168,7 +179,7 @@ function Admin() {
                                 {
                                     properties.length > 0 ? (
                                         properties.map(property => (
-                                            <PropertyRow key={property.id} id={property.id} city={property.city} category={property.category} price={property.price} />
+                                            <PropertyRow key={property.id} id={property.id} city={property.city} category={property.category} price={property.price} handleDelete={(e) => {deleteProperty(e.target)}}/>
 
                                         ))
                                     ) :
@@ -195,15 +206,33 @@ function Admin() {
                                 <tr>
                                     <th>Id</th>
                                     <th>Full Name</th>
-                                    <th>Phone</th>
+                                    <th>Company</th>
+                                    <th>Verificated</th>
                                     <th>Email</th>
                                     <th>Action</th>
                                     <th>Action</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                <UserRow id="0001" fullName="admin admin" phone="0987654345" email="admin@admin.com" />
+                            {
+                                    agents.length > 0 ? (
+                                        agents.map(agent => (
+                                            <AgentRow key={agent.id} id={agent.id} fullName={agent.full_name} company={agent.company} email={agent.email} verificated={agent.is_verified.toString()} />
 
+                                        ))
+                                    ) :
+                                        (
+                                            <tr>
+                                                <td>Loading...</td>
+                                                <td>Loading...</td>
+                                                <td>Loading...</td>
+                                                <td>Loading...</td>
+                                                <td>Loading...</td>
+                                                <td>Loading...</td>
+                                                <td>Loading...</td>
+                                            </tr>
+                                        )
+                                }
                             </tbody>
                         </table>
                         <hr className="Hrr" />
@@ -225,13 +254,12 @@ function Admin() {
                             {
                                     users.length > 0 ? (
                                         users.map(user => (
-                                            <UserRow key={user.id} id={user.id} fullName={user.first_name + user.last_name} phone={user.phone} email={user.email}/>
+                                            <UserRow key={user.id} id={user.id} fullName={user.first_name + ' ' + user.last_name} phone={user.phone} email={user.email}/>
 
                                         ))
                                     ) :
                                         (
                                             <tr>
-                                                <td>Loading...</td>
                                                 <td>Loading...</td>
                                                 <td>Loading...</td>
                                                 <td>Loading...</td>
