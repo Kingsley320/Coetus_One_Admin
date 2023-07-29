@@ -207,7 +207,7 @@ function Admin() {
                                     <th>Id</th>
                                     <th>Full Name</th>
                                     <th>Company</th>
-                                    <th>Verificated</th>
+                                    <th>Verified</th>
                                     <th>Email</th>
                                     <th>Action</th>
                                     <th>Action</th>

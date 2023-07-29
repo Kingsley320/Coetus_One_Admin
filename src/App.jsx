@@ -4,7 +4,7 @@ import AppointmentBookings from './pages/AppointmentBookings';
 // import Dashboard from './pages/Dashboard';
 import SingleProperty from './pages/SingleProperty';
 import AdminCreateProperties from './pages/AdminCreateProperties';
-import AdminPropertiesStatus from './pages/AdminPropertiesStatus';
+import AdminPropertiesStatus from './pages/ViewPropertiesStatus';
 import ApprovePropertyStatus from './pages/ApprovePropertyStatus';
 import PropertyPage from './pages/PropertyPage-admin';
 import ViewWishlist from './pages/ViewWishlist';
@@ -14,8 +14,6 @@ import CreateAgent from './pages/CreateAgent';
 import Login from './pages/Login';
 
 function App() {
-  const baseURL = "http://property.reworkstaging.name.ng/v1";
-  const aProperty = `${baseURL}/properties`;
 
   return (
     <>

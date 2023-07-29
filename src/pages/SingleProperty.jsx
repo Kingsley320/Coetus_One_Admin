@@ -32,8 +32,8 @@ function Items({ currentItems }) {
     return (
         <>
             {currentItems &&
-                currentItems.map((item) => (
-                    <div>
+                currentItems.map((item, index) => (
+                    <div key={index}>
                         <h3>{item}</h3>
                     </div>
                 ))}
@@ -89,6 +89,7 @@ function SingleProperty() {
     const { id } = useParams();
     // console.log(id);
     const [aProperty, setProperty] = useState([]);
+    const [postedAt, setPostedAt] = useState();
 
     const getProperty = async () => {
         // alert("hi")
@@ -105,6 +106,9 @@ function SingleProperty() {
             setProperty(gettheProperty.data);
             // }
             console.log(aProperty);
+            const created =  Math.floor((new Date() - new Date(aProperty.created_at))/ 1000 / 60 / 60 / 24) ;
+            setPostedAt(created);
+            // console.log(postedAt);
         } catch (error) {
             console.log(error);
         }
@@ -170,7 +174,7 @@ function SingleProperty() {
                                             <b>
                                                 ₦{Math.ceil((parseInt(aProperty.price) * 1000000 / 12) / 100 * 5)}
                                             </b>
-                                            HOA Fee
+                                              HOA Fee
                                         </p>
                                     </div>
                                     <div className="text-left">
@@ -188,7 +192,7 @@ function SingleProperty() {
                                                 <p className="text-left">{aProperty.agent.company}</p>
                                                 <p className="text-left ">{aProperty.agent.primary_phone}</p>
                                                 <p className="text-left ">{aProperty.agent.email}</p>
-                                                <p className="text-left flex">Verified Agent: {aProperty.agent.is_verified === true ? (<p>✅</p>) : (<p>❌</p>)}</p>
+                                                <p className="text-left flex">Verified Agent: {aProperty.agent.is_verified === true ? (<span>✅</span>) : (<span>❌</span>)}</p>
                                             </div>
                                         ) : (
                                             <p>Loading</p>
@@ -208,21 +212,28 @@ function SingleProperty() {
                                         <div>
                                             <div className="mb-4">
                                                 <p className="text-gray-700">Days on Market</p>
-                                                <p className="font-semibold">New 13 hours ago</p>
+                                                <p className="font-semibold">
+                                                    {postedAt} days ago</p>
                                             </div>
                                             <div>
                                                 <p className="text-gray-700">Price Per Sq Ft </p>
-                                                <p className="font-semibold">$782</p>
+                                                <p className="font-semibold">₦
+                                                {
+                                                Math.ceil(parseInt(aProperty.price) * 1000000) / (parseInt(aProperty.total_area))
+                                                }
+                                                </p>
                                             </div>
                                         </div>
                                         <div>
                                             <div className="mb-4">
                                                 <p className="text-gray-700">Est. Annual Taxes</p>
-                                                <p className="font-semibold">$21,122</p>
+                                                <p className="font-semibold">₦{
+                                                Math.ceil(parseInt(aProperty.price) *1000000 / 100) * 2
+                                            }</p>
                                             </div>
                                             <div>
                                                 <p className="text-gray-700">HOA Fees</p>
-                                                <p className="font-semibold">$500/month</p>
+                                                <p className="font-semibold">₦{ Math.ceil(parseInt(aProperty.price) *1000000 / 100) * 0.5}/month</p>
                                             </div>
                                         </div>
                                     </div>

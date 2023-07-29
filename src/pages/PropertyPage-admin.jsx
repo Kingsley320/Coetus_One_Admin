@@ -25,6 +25,7 @@ import "../pages/css/PropertyPage.css";
 import axios from "axios";
 import { Link } from "react-router-dom";
 import SingleProperty from "./SingleProperty";
+import { BsFillHouseAddFill } from "react-icons/bs";
 
 
 function PropertyPage() {
@@ -87,19 +88,28 @@ function PropertyPage() {
                 <IoArrowBackCircle className="property-cards-arrows" />
               </button>
               <div className="property-wrapper" ref={(el) => (scrollContainerRefs.current[0] = el)}>
-                {properties && properties.map((agentProperties) => (
-                 <Link to={`/${agentProperties.id}`} key={agentProperties.id}
-                  >
-                    <PropertyCard
-                      id={agentProperties.id}
-                      image={agentProperties.image}
-                      price={agentProperties.price}
-                      area={agentProperties.total_area}
-                      street={agentProperties.country}
-                      city={agentProperties.city}
-                    />
-                    </Link>
-                ))}
+                {
+
+                  properties.length > 0 ? (
+                    properties && properties.map((agentProperties) => (
+                      <Link to={`/${agentProperties.id}`} key={agentProperties.id}
+                      >
+                        <PropertyCard
+                          id={agentProperties.id}
+                          image={agentProperties.image}
+                          price={agentProperties.price}
+                          area={agentProperties.total_area}
+                          street={agentProperties.country}
+                          city={agentProperties.city}
+                        />
+                      </Link>
+                    ))
+                  ) : (
+                    <h3 className="flex gap-2 text-xl text-black  mt-10">No New Properties Available <BsFillHouseAddFill /></h3>
+
+                  )
+
+                }
               </div>
               <button onClick={() => scrollRight(0)}>
                 <IoArrowForwardCircle className="property-cards-arrows" />

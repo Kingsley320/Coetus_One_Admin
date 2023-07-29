@@ -1,8 +1,9 @@
 
 export default function PropertyRow(props) {
+
     return (
         <>
-            <tr>
+            <tr id={props.id}>
                 <td>
                     <img src={props.image} alt="image" style={{ width: "50px", height: "auto" }} />
                 </td>
@@ -10,8 +11,8 @@ export default function PropertyRow(props) {
                 <td>{props.city}</td>
                 <td>{props.category}</td>
                 <td>{props.price}</td>
-                <td><button className="Table-deleteBtn">Delete</button></td>
-                <td><button className="Table-editBtn">Edit</button></td>
+                <td><button className="Table-deleteBtn" onClick={props.handleDelete}>Delete</button></td>
+                <td><button className="Table-editBtn" onClick={props.handleEdit}>Edit</button></td>
             </tr>
         </>
     )

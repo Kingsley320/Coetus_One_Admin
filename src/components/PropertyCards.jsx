@@ -1,4 +1,4 @@
-import { IoEye, IoHeartOutline } from "react-icons/io5";
+import { IoHeartOutline } from "react-icons/io5";
 function PropertyCards(props) {
     return (
         <div className="property-card text-left h-auto bg-white">
@@ -10,11 +10,11 @@ function PropertyCards(props) {
                 <img src={props.image} alt="property" className="m-0  p-0 h-20"/>
             </div>
             <div className="bottom mt-8 leading-2">
-                <div className="price-like">
+                <div className="">
                     <h3>${props.price}</h3>
                     <IoHeartOutline className="property-heart hover:scale-125"/>
                 </div>
-                <p>{props.area} Sq ft</p>
+                <p>{props.area}</p>
                 <p className="clip">{props.street}</p>
                 <p>{props.city}</p>
                 <div className="btns">
