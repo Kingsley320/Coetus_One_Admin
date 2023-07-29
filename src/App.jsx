@@ -1,5 +1,5 @@
 import './App.css';
-import {BrowserRouter, Routes, Route} from 'react-router-dom';
+import {BrowserRouter, Routes, Route, useParams} from 'react-router-dom';
 import AppointmentBookings from './pages/AppointmentBookings';
 // import Dashboard from './pages/Dashboard';
 import SingleProperty from './pages/SingleProperty';
@@ -14,6 +14,8 @@ import CreateAgent from './pages/CreateAgent';
 import Login from './pages/Login';
 
 function App() {
+  const baseURL = "http://property.reworkstaging.name.ng/v1";
+  const aProperty = `${baseURL}/properties`;
 
   return (
     <>
@@ -23,7 +25,7 @@ function App() {
         <Route path="/dashboard" element={<Admin />}/>
 
         <Route path="/appointments" element={<AppointmentBookings />}/>
-        <Route path="/single-property" element={<SingleProperty />}/>
+        <Route path={`/:id`} element={<SingleProperty />}/>
         <Route path="/create-properties" element={<AdminCreateProperties />}/>
 
         <Route path="/create-user" element={<NewUser />}/>
