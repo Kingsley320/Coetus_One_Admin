@@ -13,7 +13,7 @@ export default function AdminAppointments() {
 
 
         const config = {
-            headers: { Authorization: `Bearer ${token}` }
+            headers: { Authorization: `Bearer ${sessionStorage.get_tem("admin-token")}` }
         }
 
         try {
