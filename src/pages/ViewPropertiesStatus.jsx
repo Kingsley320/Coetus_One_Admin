@@ -37,11 +37,11 @@ console.log(properties);
   }, []);
 
   return (
-    <div className="propertiesStatus-container">
+    <div className="">
       <div>
         <SideBar />
       </div>
-      <div className="propertiesStatus-Main pl-64">
+      <div className=" pl-0">
         <h1 className="Property-Status-h1">Property Status</h1>
         <div className="propertiesStatus-props">
           
@@ -55,7 +55,7 @@ console.log(properties);
                       area={agentProperties.total_area}
                       street={agentProperties.address}
                       city={agentProperties.city}
-                      status = {agentProperties.is_verified.toString()}
+                      status = {agentProperties.is_verified.toString() === "true" ? "Verified" : "Unverified"}
                     />
                   </div>
                 ))}
