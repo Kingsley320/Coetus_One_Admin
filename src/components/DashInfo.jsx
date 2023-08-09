@@ -33,7 +33,7 @@ function DashInfo() {
             const properties = await axios.get(`${baseURL}/properties?agent=64b847c211d45559c8840c16&verified=false`, config)
             setPropertiesLen(properties.data.data.length);
             setProperties(properties.data.data);
-            console.log(properties.data);
+            // console.log(properties.data);
         }
         catch (err) {
             console.log(err);
@@ -78,8 +78,11 @@ function DashInfo() {
 
 
     const deleteProperty = async (e) => {
-        const id = e.parentNode.parentNode;
+        const id = e.parentNode.parentNode.id;
         console.log(id);
+        // const newProps = properties.filter(property => property.id !== id );
+        // console.log(newProps);
+        setProperties(properties.filter(property => property.id !== id ));
         try {
             const deleteItem = await axios.delete(`${baseURL}/properties/${id}`)
         } catch (error) {
@@ -160,13 +163,13 @@ function DashInfo() {
                     </table>
                 </div> */}
 
-                <div className="" >
+                <div className="mx-5 rounded-xl" >
                     <h1 className="my-5 text-xl underline underline-offset-4">Properties</h1>
                     <table className="table-auto w-full  ">
-                        <thead>
-                            <tr className="bg-white text-black border border-black border-collaspe">
-                                <th>Image</th>
+                        <thead className="rounded-lg">
+                            <tr className="bg-white text-black border border-t-black border-collaspe">
                                 <th>id</th>
+                                <th>Image</th>
                                 <th>City</th>
                                 <th>Category</th>
                                 <th>Price</th>
